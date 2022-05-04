@@ -1,15 +1,16 @@
 
 import { AnsiDialect } from "../AnsiDialect";
+import { Dialect } from "../Dialect";
 import { ObjectMetadata } from "../ObjectMetadata";
 test("findByKeySql", () => {
     const metadata = new ObjectMetadata();
-	const dialect = new AnsiDialect(metadata);
+	const dialect: Dialect = new AnsiDialect(metadata);
     const sql = dialect.findByKeySql("TEST");
 	expect(sql).toStrictEqual('select * from "TEST" where "Id"=?');
 });
 test("findByKeyParams", () => {
     const metadata = new ObjectMetadata();
-	const dialect = new AnsiDialect(metadata);
+	const dialect: Dialect = new AnsiDialect(metadata);
     const data = {
 		Id: 1,
 		b: 2
@@ -19,7 +20,7 @@ test("findByKeyParams", () => {
 });
 test("insertSql", () => {
     const metadata = new ObjectMetadata();
-	const dialect = new AnsiDialect(metadata);
+	const dialect: Dialect = new AnsiDialect(metadata);
     const data = {
 		a: 1,
 		b: 2
@@ -29,7 +30,7 @@ test("insertSql", () => {
 });
 test("insertParams", () => {
     const metadata = new ObjectMetadata();
-	const dialect = new AnsiDialect(metadata);
+	const dialect: Dialect = new AnsiDialect(metadata);
     const data = {
 		a: 1,
 		b: 2
@@ -39,7 +40,7 @@ test("insertParams", () => {
 });
 test("updateSql", () => {
     const metadata = new ObjectMetadata();
-	const dialect = new AnsiDialect(metadata);
+	const dialect: Dialect = new AnsiDialect(metadata);
     const data = {
 		a: 1,
 		b: 2
@@ -49,7 +50,7 @@ test("updateSql", () => {
 });
 test("updateParams", () => {
     const metadata = new ObjectMetadata();
-	const dialect = new AnsiDialect(metadata);
+	const dialect: Dialect = new AnsiDialect(metadata);
     const data = {
 		Id: 100,
 		a: 1,
@@ -61,7 +62,7 @@ test("updateParams", () => {
 
 test("deleteSql", () => {
     const metadata = new ObjectMetadata();
-	const dialect = new AnsiDialect(metadata);
+	const dialect: Dialect = new AnsiDialect(metadata);
     const sql = dialect.deleteSql("TEST");
 	expect(sql).toStrictEqual('delete "TEST" where "Id"=?');
 });

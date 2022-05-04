@@ -6,17 +6,17 @@ export class AnsiDialect implements Dialect{
         this.metadata = metadata;
     }
     metadata: Metadata;
-    findByKeySql(table: string):string {
+    public findByKeySql(table: string):string {
         const where = this.whereSqlKeys(table);
         const sql = `select * from "${table}" where ${where}`
         return sql
     }
-    findByKeyParams(table: string, data: any):any[] {
+    public findByKeyParams(table: string, data: any):any[] {
         const rt = this.whereSqlKeysParams(table, data);
     
         return rt;
     }
-    insertSql(table: string, data: any):string {
+    public insertSql(table: string, data: any):string {
         const columns = this.metadata.getColumns(table, data);
         let strColumn = "";
         let strValue = "";
@@ -30,7 +30,7 @@ export class AnsiDialect implements Dialect{
         return sql
     }
 
-    insertParams(table: string, data: any):any [] {
+    public insertParams(table: string, data: any):any [] {
         const columns = this.metadata.getColumns(table, data);
         const rt: any[] = [];
         for(let column of columns) {
@@ -40,7 +40,7 @@ export class AnsiDialect implements Dialect{
         return rt;
     }
 
-    updateSql(table: string, data: any):string {
+    public updateSql(table: string, data: any):string {
         const columns = this.metadata.getColumns(table, data);
         let sqlUpdate = "";
         for(let column of columns) {
@@ -51,7 +51,7 @@ export class AnsiDialect implements Dialect{
         const sql = `update "${table}" set ${sqlUpdate} where ${sqlWhere}`
         return sql
     }
-    updateParams(table: string, data: any):any[] {
+    public updateParams(table: string, data: any):any[] {
         const columns = this.metadata.getColumns(table, data);
         const colKeys = this.metadata.getPrimaryKey(table);
         const rt: any[] = [];
@@ -65,7 +65,7 @@ export class AnsiDialect implements Dialect{
 
         return rt
     }
-    deleteSql(table: string):string {
+    public deleteSql(table: string):string {
         const columns = this.metadata.getPrimaryKey(table);
         const where = this.whereSqlKeys(table);
         const sql = `delete "${table}" where ${where}`;

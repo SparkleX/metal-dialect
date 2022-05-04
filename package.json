@@ -1,6 +1,6 @@
 {
 	"name": "metal-dialect",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "SQL Dialect",
 	"main": "dist/index.js",
 	"scripts": {

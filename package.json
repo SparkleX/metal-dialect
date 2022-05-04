@@ -1,0 +1,24 @@
+{
+	"name": "metal-dao",
+	"version": "0.0.1",
+	"description": "Data Access Decorator",
+	"main": "dist/index.js",
+	"scripts": {
+		"prebuild": "npm run clean",
+		"build": "tsc",
+		"clean": "rimraf dist",
+		"test": "jest"
+	},
+	"author": "Sun, Xufei",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/jest": "^27.5.0",
+		"@types/node": "^17.0.31",
+		"jest": "^28.0.3",
+		"rimraf": "^3.0.2",
+		"ts-jest": "^28.0.1",
+		"typescript": "^4.6.4"
+	},
+	"keywords": [],
+	"homepage": "https://github.com/SparkleX/db-conn"
+}

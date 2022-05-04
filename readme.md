@@ -1,21 +1,13 @@
-# Data Access Decorator
+# SQL Dialect
 
 
 ```js
-import { init, query } from "metal-dao";
-
-function callback (query: string, params:any[], target: object, propertyKey: string, context?: string){
-    // will be called later
-    return "data"
-}
-class DaoTEST {
-	@query("select * from TEST","connection 2")
-	async find(a: number, b: string):Promise<any> {
-		throw -1;
+    const metadata = new ObjectMetadata();
+	const dialect = new AnsiDialect(metadata);
+    const data = {
+		a: 1,
+		b: 2
 	}
-}
-
-const daoTest = new DaoTest();
-const rt = await daoTest.find(1, "2");
-
+    const sql = dialect.insertSql("TEST", data);
+	expect(sql).toStrictEqual('insert into "TEST"("a","b") values(?,?)');
 ```

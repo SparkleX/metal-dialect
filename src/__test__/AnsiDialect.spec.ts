@@ -41,23 +41,28 @@ test("insertParams", () => {
 test("updateSql", () => {
     const metadata = new ObjectMetadata();
 	const dialect: Dialect = new AnsiDialect(metadata);
+	const key = {
+		Id: 100
+	}
     const data = {
 		a: 1,
 		b: 2
 	}
-    const sql = dialect.updateSql("TEST", data);
+    const sql = dialect.updateSql("TEST", key, data);
 	expect(sql).toStrictEqual('update "TEST" set "a"=?,"b"=? where "Id"=?');
 });
 test("updateParams", () => {
     const metadata = new ObjectMetadata();
 	const dialect: Dialect = new AnsiDialect(metadata);
+	const key = {
+		Id: 100
+	}
     const data = {
-		Id: 100,
 		a: 1,
 		b: 2
 	}
-    const rt = dialect.updateParams("TEST", data);
-	expect(rt).toStrictEqual([100,1,2,100]);
+    const rt = dialect.updateParams("TEST", key, data);
+	expect(rt).toStrictEqual([1,2,100]);
 });
 
 test("deleteSql", () => {
@@ -65,4 +70,11 @@ test("deleteSql", () => {
 	const dialect: Dialect = new AnsiDialect(metadata);
     const sql = dialect.deleteSql("TEST");
 	expect(sql).toStrictEqual('delete "TEST" where "Id"=?');
+});
+
+test("foo", () => {
+    const metadata = new ObjectMetadata();
+	const dialect: Dialect = new AnsiDialect(metadata);
+    dialect.createIndex("", [], true);
+	dialect.createTable("", [], []);
 });

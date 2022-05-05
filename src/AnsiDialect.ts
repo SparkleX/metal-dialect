@@ -1,9 +1,15 @@
 import { Dialect } from "./Dialect";
-import { Metadata } from "./Metadata";
+import { MColumn, Metadata } from "./Metadata";
 
 export class AnsiDialect implements Dialect{
     constructor( metadata: Metadata) {
         this.metadata = metadata;
+    }
+    public createTable(name: string, columns: MColumn[], keys: string[]): string {
+        return "";
+    }
+    public createIndex(name: string, columns: string[], unique: boolean): string {
+        return "";
     }
     metadata: Metadata;
     public findByKeySql(table: string):string {
@@ -11,8 +17,8 @@ export class AnsiDialect implements Dialect{
         const sql = `select * from "${table}" where ${where}`
         return sql
     }
-    public findByKeyParams(table: string, data: any):any[] {
-        const rt = this.whereSqlKeysParams(table, data);
+    public findByKeyParams(table: string, key: any):any[] {
+        const rt = this.whereSqlKeysParams(table, key);
     
         return rt;
     }
@@ -40,7 +46,7 @@ export class AnsiDialect implements Dialect{
         return rt;
     }
 
-    public updateSql(table: string, data: any):string {
+    public updateSql(table: string, key: any, data: any):string {
         const columns = this.metadata.getColumns(table, data);
         let sqlUpdate = "";
         for(let column of columns) {
@@ -51,7 +57,7 @@ export class AnsiDialect implements Dialect{
         const sql = `update "${table}" set ${sqlUpdate} where ${sqlWhere}`
         return sql
     }
-    public updateParams(table: string, data: any):any[] {
+    public updateParams(table: string, key: any, data: any):any[] {
         const columns = this.metadata.getColumns(table, data);
         const colKeys = this.metadata.getPrimaryKey(table);
         const rt: any[] = [];
@@ -60,7 +66,7 @@ export class AnsiDialect implements Dialect{
             rt.push(data[column]);
         }
         for(let column of colKeys) {
-            rt.push(data[column]);
+            rt.push(key[column]);
         }
 
         return rt

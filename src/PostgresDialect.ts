@@ -1,5 +1,5 @@
 import { AnsiDialect } from "./AnsiDialect";
-import { MColumn } from "./Metadata";
+import { MColumn, Metadata } from "./Metadata";
 
 export enum PgSqlDataType {
     DECIMAL = "DECIMAL",
@@ -9,6 +9,9 @@ export enum PgSqlDataType {
 }
 
 export class PostgresDialect extends AnsiDialect {
+    public constructor(metadata: Metadata) {
+        super(metadata);
+    }
 
     public createTable(name: string, columns: MColumn[], keys: string[]): string {
 

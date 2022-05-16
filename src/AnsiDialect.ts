@@ -74,7 +74,7 @@ export class AnsiDialect implements Dialect{
     public deleteSql(table: string, key: any):string {
         const columns = this.metadata.getPrimaryKey(table);
         const where = this.whereSqlKeysWithName(key);
-        const sql = `delete "${table}" where ${where}`;
+        const sql = `delete from "${table}" where ${where}`;
         return sql
     }
     private whereSqlKeysWithName(key: any): string {

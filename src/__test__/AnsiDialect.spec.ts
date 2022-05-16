@@ -69,7 +69,7 @@ test("deleteSql", () => {
     const metadata = new ObjectMetadata();
 	const dialect: Dialect = new AnsiDialect(metadata);
     const sql = dialect.deleteSql("TEST", {Id:1});
-	expect(sql).toStrictEqual('delete "TEST" where "Id"=:Id');
+	expect(sql).toStrictEqual('delete from "TEST" where "Id"=:Id');
 });
 
 test("foo", () => {

@@ -5,8 +5,8 @@ import { ObjectMetadata } from "../ObjectMetadata";
 test("findByKeySql", () => {
     const metadata = new ObjectMetadata();
 	const dialect: Dialect = new AnsiDialect(metadata);
-    const sql = dialect.findByKeySql("TEST");
-	expect(sql).toStrictEqual('select * from "TEST" where "Id"=?');
+    const sql = dialect.findByKeySql("TEST", {Id:1});
+	expect(sql).toStrictEqual('select * from "TEST" where "Id"=:Id');
 });
 test("findByKeyParams", () => {
     const metadata = new ObjectMetadata();
@@ -68,8 +68,8 @@ test("updateParams", () => {
 test("deleteSql", () => {
     const metadata = new ObjectMetadata();
 	const dialect: Dialect = new AnsiDialect(metadata);
-    const sql = dialect.deleteSql("TEST");
-	expect(sql).toStrictEqual('delete "TEST" where "Id"=?');
+    const sql = dialect.deleteSql("TEST", {Id:1});
+	expect(sql).toStrictEqual('delete "TEST" where "Id"=:Id');
 });
 
 test("foo", () => {

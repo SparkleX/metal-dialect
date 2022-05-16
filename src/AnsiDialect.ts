@@ -12,8 +12,8 @@ export class AnsiDialect implements Dialect{
         return "";
     }
     metadata: Metadata;
-    public findByKeySql(table: string):string {
-        const where = this.whereSqlKeys(table);
+    public findByKeySql(table: string, key: any):string {
+        const where = this.whereSqlKeysWithName(key);
         const sql = `select * from "${table}" where ${where}`
         return sql
     }
@@ -71,13 +71,20 @@ export class AnsiDialect implements Dialect{
 
         return rt
     }
-    public deleteSql(table: string):string {
+    public deleteSql(table: string, key: any):string {
         const columns = this.metadata.getPrimaryKey(table);
-        const where = this.whereSqlKeys(table);
+        const where = this.whereSqlKeysWithName(key);
         const sql = `delete "${table}" where ${where}`;
         return sql
     }
-
+    private whereSqlKeysWithName(key: any): string {
+        let where = "";
+        for(let k in key) {
+            where+=`"${k}"=:${k} and `;
+        }
+        where = where.substring(0, where.length-5);
+        return where;
+    }
     private whereSqlKeys(table: string): string {
         const columns = this.metadata.getPrimaryKey(table);
         let where = "";

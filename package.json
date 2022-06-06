@@ -1,6 +1,6 @@
 {
 	"name": "metal-dialect",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"description": "SQL Dialect",
 	"main": "dist/index.js",
 	"scripts": {
@@ -20,5 +20,8 @@
 		"typescript": "^4.6.4"
 	},
 	"keywords": [],
-	"homepage": "https://gitee.com/sparklex/metal-dialect"
+	"homepage": "https://gitee.com/sparklex/metal-dialect",
+	"dependencies": {
+		"db-conn": "^1.3.2"
+	}
 }

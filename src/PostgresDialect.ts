@@ -1,12 +1,6 @@
+import { SqlType } from "db-conn";
 import { AnsiDialect } from "./AnsiDialect";
 import { MColumn, Metadata } from "./Metadata";
-
-export enum PgSqlDataType {
-    DECIMAL = "DECIMAL",
-    INTEGER = "INTEGER",
-    NVARCHAR = "NVARCHAR",
-    FLOAT = "FLOAT",
-}
 
 export class PostgresDialect extends AnsiDialect {
     public constructor(metadata: Metadata) {
@@ -34,12 +28,24 @@ export class PostgresDialect extends AnsiDialect {
     }
     columnToSqlType(column: MColumn): string {
         switch(column.type) {
-            case PgSqlDataType.NVARCHAR:
+            case SqlType.varchar:
                return `varchar(${column.size})`;
-            case PgSqlDataType.INTEGER:
+            case SqlType.integer:
                 return "integer";
-            case PgSqlDataType.DECIMAL:
+            case SqlType.float:
+                return `float`;
+            case SqlType.decimal:
                 return `numeric(${column.precision}, ${column.scale})`;
+            case SqlType.date:
+                return `date`;
+            case SqlType.time:
+                return `time`;
+            case SqlType.timestamp:
+                return `timestamp`;
+            case SqlType.clob:
+                return `text`;
+            case SqlType.blob:
+                return `bytea`;
             default:
                 throw new Error(`unknown type ${column.name}`);
         }

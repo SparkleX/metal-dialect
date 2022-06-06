@@ -1,11 +1,5 @@
 import { MColumn } from "./Metadata";
 
-export enum SqlDataType {
-    DECIMAL = "DECIMAL",
-    INTEGER = "INTEGER",
-    NVARCHAR = "NVARCHAR",
-    FLOAT = "FLOAT",
-}
 
 export interface Dialect {
     findByKeySql(table: string, key: any): string;

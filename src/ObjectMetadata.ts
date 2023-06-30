@@ -1,4 +1,4 @@
-import { Metadata } from "./Metadata";
+import { Metadata } from "./Metadata.js";
 
 export class ObjectMetadata implements Metadata {
     public getPrimaryKey(table: string): string[] {

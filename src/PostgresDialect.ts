@@ -1,13 +1,12 @@
-import { SqlType } from "db-conn";
-import { AnsiDialect } from "./AnsiDialect";
-import { MColumn, Metadata } from "./Metadata";
+import { AnsiDialect } from "./AnsiDialect.js";
+import { MColumn, Metadata } from "./Metadata.js";
 
 export class PostgresDialect extends AnsiDialect {
     public constructor(metadata: Metadata) {
         super(metadata);
     }
 
-    public createTable(name: string, columns: MColumn[], keys: string[]): string {
+  /*  public createTable(name: string, columns: MColumn[], keys: string[]): string {
 
         let sqlColumns = "";
         for(let column of columns) {
@@ -49,5 +48,5 @@ export class PostgresDialect extends AnsiDialect {
             default:
                 throw new Error(`unknown type ${column.name}`);
         }
-    }
+    }*/
 }

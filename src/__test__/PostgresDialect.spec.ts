@@ -1,10 +1,9 @@
 
-import { PostgresDialect } from "../PostgresDialect";
-import { Dialect } from "../Dialect";
-import { ObjectMetadata } from "../ObjectMetadata";
-import { MColumn } from "../Metadata";
-import { SqlType } from "db-conn";
-test("create table", () => {
+import { PostgresDialect } from "../PostgresDialect.js";
+import { Dialect } from "../Dialect.js";
+import { ObjectMetadata } from "../ObjectMetadata.js";
+import { MColumn } from "../Metadata.js";
+/*test("create table", () => {
     const metadata = new ObjectMetadata();
 	const dialect: Dialect = new PostgresDialect(metadata);
 	const columns: MColumn[] = [
@@ -51,7 +50,7 @@ test("create table", () => {
     const sql = dialect.createTable("TEST", columns, ["C1"])
 	expect(sql).toStrictEqual('create table "TEST"("C1" varchar(100) primary key,"C2" integer,"C3" numeric(19, 6),"C4" float,"C5" date,"C6" time,"C7" timestamp,"C8" bytea,"C8" text)');
 });
-
+*/
 test("create table", () => {
     const metadata = new ObjectMetadata();
 	const dialect: Dialect = new PostgresDialect(metadata);

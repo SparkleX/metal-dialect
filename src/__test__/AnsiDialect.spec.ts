@@ -1,7 +1,7 @@
 
-import { AnsiDialect } from "../AnsiDialect";
-import { Dialect } from "../Dialect";
-import { ObjectMetadata } from "../ObjectMetadata";
+import { AnsiDialect } from "../AnsiDialect.js";
+import { Dialect } from "../Dialect.js";
+import { ObjectMetadata } from "../ObjectMetadata.js";
 test("findByKeySql", () => {
     const metadata = new ObjectMetadata();
 	const dialect: Dialect = new AnsiDialect(metadata);

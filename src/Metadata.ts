@@ -6,9 +6,6 @@ export interface MColumn {
     scale?: number;
 } 
 
-
-
-
 export interface Metadata {
     getColumns(table: string, data: object): string[];
     getPrimaryKey(table: string): string[];

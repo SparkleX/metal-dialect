@@ -1,5 +1,4 @@
-import { MColumn } from "./Metadata";
-
+import { MColumn } from "./Metadata.js";
 
 export interface Dialect {
     findByKeySql(table: string, key: any): string;

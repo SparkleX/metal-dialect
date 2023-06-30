@@ -1,5 +1,5 @@
-import { Dialect } from "./Dialect";
-import { MColumn, Metadata } from "./Metadata";
+import { Dialect } from "./Dialect.js";
+import { MColumn, Metadata } from "./Metadata.js";
 
 export class AnsiDialect implements Dialect{
     constructor( metadata: Metadata) {

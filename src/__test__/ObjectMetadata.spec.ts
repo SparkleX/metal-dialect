@@ -1,5 +1,5 @@
 
-import { ObjectMetadata } from "../ObjectMetadata";
+import { ObjectMetadata } from "../ObjectMetadata.js";
 
 test("test", () => {
 	const metadata = new ObjectMetadata();

@@ -2,9 +2,7 @@ import { AnsiDialect } from "./AnsiDialect.js";
 import { MColumn, Metadata } from "./Metadata.js";
 
 export class PostgresDialect extends AnsiDialect {
-    public constructor(metadata: Metadata) {
-        super(metadata);
-    }
+
 
   /*  public createTable(name: string, columns: MColumn[], keys: string[]): string {
 

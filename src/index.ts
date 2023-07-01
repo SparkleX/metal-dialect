@@ -3,3 +3,4 @@ export * from "./PostgresDialect.js";
 export * from "./Dialect.js";
 export * from "./Metadata.js";
 export * from "./ObjectMetadata.js";
+export * from "./MySqlDialect.js";

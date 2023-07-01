@@ -1,0 +1,13 @@
+{
+    "name":"CARD",
+    "fields": {
+        "NodeID" : {
+            "type": "string",
+            "size": 10
+        },
+        "CardName" : {
+            "type": "string",
+            "size": 10
+        }
+    }
+}

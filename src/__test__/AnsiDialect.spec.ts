@@ -74,7 +74,7 @@ test("deleteSql", () => {
 
 test("foo", () => {
     const metadata = new ObjectMetadata();
-	const dialect: Dialect = new AnsiDialect(metadata);
+	const dialect: Dialect = new AnsiDialect();
     dialect.createIndex("", [], true);
 	dialect.createTable("", [], []);
 });

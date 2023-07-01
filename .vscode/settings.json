@@ -1,0 +1,10 @@
+{
+	"json.schemas": [
+		{
+			"fileMatch": [
+				"*.table.json"
+			],
+			"url": "./node_modules/dcmm-schema/schema/table/index.json"
+		}
+	]
+}

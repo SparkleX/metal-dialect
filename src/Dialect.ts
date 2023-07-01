@@ -1,7 +1,8 @@
 import { MColumn } from "./Metadata.js";
+import { Table, Field } from "dcmm-schema";
 
 export interface Dialect {
-    findByKeySql(table: string, key: any): string;
+    /*findByKeySql(table: string, key: any): string;
     findByKeyParams(table: string, key: any): any[];
     insertSql(table: string, data: any): string;
 
@@ -11,5 +12,6 @@ export interface Dialect {
     deleteSql(table: string, key: any): string;
 
     createTable(name: string, columns:MColumn[], keys:string[]): string;
-    createIndex(name: string, columns:string[], unique: boolean): string;
+    createIndex(name: string, columns:string[], unique: boolean): string;*/
+    createTable(table: Table): string;
 }
